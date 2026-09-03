@@ -1,6 +1,7 @@
 import requests
 from InquirerPy import inquirer
 
+
 def fetch_weather_data(latitude,longitude):
 	url = "https://api.open-meteo.com/v1/forecast"
 	params = {
@@ -161,8 +162,14 @@ if __name__ == "__main__":
 		current_weather = parse_weather_data(data)
 		recommendation = get_recommendation(current_weather)
 		print(recommendation)
-		user_input = input("Tekrar aramak için `Enter` a basın, kapatmak için 0 tuşlayın:	")
-		if user_input == "0":
+		selected_option = inquirer.select(
+    		message="Seçim yapın.",
+    		choices=[
+				"Arama",
+				"Çıkış"
+				]
+		).execute()
+		if selected_option == "Çıkış":
 			break
-		else:
+		elif selected_option == "Arama":
 			continue
