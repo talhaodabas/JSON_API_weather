@@ -1,5 +1,5 @@
 import requests
-
+from InquirerPy import inquirer
 
 def fetch_weather_data(latitude,longitude):
 	url = "https://api.open-meteo.com/v1/forecast"
